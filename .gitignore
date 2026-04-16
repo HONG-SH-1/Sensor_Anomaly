@@ -1,0 +1,14 @@
+venv/
+data/raw/
+outputs/figures/
+models/checkpoints/
+*.pt
+*.pkl
+__pycache__/
+.ipynb_checkpoints/
+.env
+rag/chroma_db/
+outputs/reports/
+vif_v/
+all_v/
+gcp-key.json
