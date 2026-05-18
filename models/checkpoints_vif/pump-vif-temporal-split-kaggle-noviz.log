@@ -1,0 +1,384 @@
+6.7s 1 0.00s - Debugger warning: It seems that frozen modules are being used, which may
+6.7s 2 0.00s - make the debugger miss breakpoints. Please pass -Xfrozen_modules=off
+6.7s 3 0.00s - to python to disable frozen modules.
+6.7s 4 0.00s - Note: Debugging will proceed. Set PYDEVD_DISABLE_FILE_VALIDATION=1 to disable this validation.
+7.3s 5 0.00s - Debugger warning: It seems that frozen modules are being used, which may
+7.3s 6 0.00s - make the debugger miss breakpoints. Please pass -Xfrozen_modules=off
+7.3s 7 0.00s - to python to disable frozen modules.
+7.3s 8 0.00s - Note: Debugging will proceed. Set PYDEVD_DISABLE_FILE_VALIDATION=1 to disable this validation.
+30.6s 9 Mode   : TUNING (속도 최우선)
+30.6s 10 Device : cuda
+30.6s 11 Data   : /kaggle/input/datasets/nphantawee/pump-sensor-data/sensor.csv
+30.6s 12 Config OK.
+30.6s 13 ✅ 파일 탐색 성공: /kaggle/input/datasets/nphantawee/pump-sensor-data/sensor.csv
+30.6s 14 ✅ 데이터 읽기 성공! Shape (샘플): (5, 55)
+30.6s 15 📊 센서 컬럼 개수: 52개
+30.6s 16 📊 레이블(machine_status) 존재: YES
+30.6s 17 
+30.6s 18 === 데이터 상위 3행 샘플 ===
+30.7s 19 
+30.7s 20 💻 실행 디바이스: cuda
+30.7s 21 📂 모델 저장 경로: /kaggle/working/models
+33.9s 22 Shape         : (220320, 54)
+33.9s 23 Sensor cols   : 52
+33.9s 24 Date range    : 2018-04-01 00:00:00 ~ 2018-08-31 23:59:00
+33.9s 25 
+33.9s 26 machine_status counts:
+33.9s 27 machine_status
+33.9s 28 NORMAL        205836
+33.9s 29 RECOVERING     14477
+33.9s 30 BROKEN             7
+33.9s 31 Name: count, dtype: int64
+34.1s 32 Dropped by missing: ['sensor_15']
+34.1s 33 Remaining sensors : 51
+36.4s 34 === VIF Before Elimination (top 15) ===
+36.4s 35 feature         VIF
+36.4s 36 sensor_20 7355.488165
+36.4s 37 sensor_21 5149.107728
+36.4s 38 sensor_19 4844.920093
+36.4s 39 sensor_08 1979.550499
+36.4s 40 sensor_02 1837.463999
+36.4s 41 sensor_03 1619.169801
+36.4s 42 sensor_07 1308.595717
+36.4s 43 sensor_23 1203.416779
+36.4s 44 sensor_14 1070.459667
+36.4s 45 sensor_09  920.978077
+36.4s 46 sensor_25  919.915516
+36.4s 47 sensor_01  873.760475
+36.4s 48 sensor_22  866.496716
+36.4s 49 sensor_16  825.981352
+36.4s 50 sensor_17  674.914081
+36.6s 51 
+36.6s 52 === Iterative VIF Elimination ===
+39.0s 53 [step 1] Drop sensor_20        VIF=7355.49
+41.1s 54 [step 2] Drop sensor_21        VIF=3477.94
+43.2s 55 [step 3] Drop sensor_08        VIF=1979.53
+45.2s 56 [step 4] Drop sensor_02        VIF=1792.04
+47.0s 57 [step 5] Drop sensor_19        VIF=1348.37
+48.8s 58 [step 6] Drop sensor_23        VIF=899.21
+50.5s 59 [step 7] Drop sensor_25        VIF=883.86
+52.1s 60 [step 8] Drop sensor_14        VIF=835.38
+53.6s 61 [step 9] Drop sensor_01        VIF=825.79
+54.9s 62 [step 10] Drop sensor_07        VIF=792.22
+56.2s 63 [step 11] Drop sensor_17        VIF=534.05
+57.4s 64 [step 12] Drop sensor_00        VIF=504.55
+58.5s 65 [step 13] Drop sensor_22        VIF=428.91
+59.6s 66 [step 14] Drop sensor_04        VIF=372.66
+60.6s 67 [step 15] Drop sensor_06        VIF=337.47
+61.7s 68 [step 16] Drop sensor_03        VIF=204.90
+62.5s 69 [step 17] Drop sensor_26        VIF=203.05
+63.3s 70 [step 18] Drop sensor_16        VIF=167.10
+64.1s 71 [step 19] Drop sensor_43        VIF=136.57
+64.8s 72 [step 20] Drop sensor_32        VIF=131.83
+65.5s 73 [step 21] Drop sensor_41        VIF=117.59
+66.1s 74 [step 22] Drop sensor_10        VIF=107.86
+66.6s 75 [step 23] Drop sensor_09        VIF=103.47
+67.1s 76 [step 24] Drop sensor_33        VIF=98.52
+67.6s 77 [step 25] Drop sensor_35        VIF=90.45
+68.0s 78 [step 26] Drop sensor_11        VIF=84.71
+68.4s 79 [step 27] Drop sensor_24        VIF=81.01
+68.7s 80 [step 28] Drop sensor_44        VIF=70.17
+69.1s 81 [step 29] Drop sensor_50        VIF=52.10
+69.4s 82 [step 30] Drop sensor_38        VIF=50.43
+69.6s 83 [step 31] Done — all VIF <= 50.0
+69.7s 84 
+69.7s 85 Original   : 51 sensors
+69.7s 86 Dropped (VIF)    : ['sensor_00', 'sensor_01', 'sensor_02', 'sensor_03', 'sensor_04', 'sensor_06', 'sensor_07', 'sensor_08', 'sensor_09', 'sensor_10', 'sensor_11', 'sensor_14', 'sensor_16', 'sensor_17', 'sensor_19', 'sensor_20', 'sensor_21', 'sensor_22', 'sensor_23', 'sensor_24', 'sensor_25', 'sensor_26', 'sensor_32', 'sensor_33', 'sensor_35', 'sensor_38', 'sensor_41', 'sensor_43', 'sensor_44', 'sensor_50']
+69.7s 87 Dropped (zero-var): []
+69.7s 88 FINAL : 21 features
+69.7s 89 
+69.7s 90 Final features: ['sensor_05', 'sensor_12', 'sensor_13', 'sensor_18', 'sensor_27', 'sensor_28', 'sensor_29', 'sensor_30', 'sensor_31', 'sensor_34', 'sensor_36', 'sensor_37', 'sensor_39', 'sensor_40', 'sensor_42', 'sensor_45', 'sensor_46', 'sensor_47', 'sensor_48', 'sensor_49', 'sensor_51']
+70.1s 91 [Split] n=220320 | train 121176 | val 33048 | test 66096
+70.1s 92 [Split] anomaly %  train 4.93% | val 25.52% | test 0.11%
+70.1s 93 Scaler        : minmax
+70.1s 94 Scaled range  : [-0.032, 2.597]
+70.1s 95 Train / val / test shapes: (121176, 21), (33048, 21), (66096, 21)
+70.5s 96 X_train (normal) : torch.Size([11496, 50, 21])  — Autoencoder 학습용
+70.5s 97 X_val (all)      : torch.Size([3300, 50, 21])
+70.5s 98 X_test (all)     : torch.Size([6605, 50, 21])
+70.5s 99 y_val anomaly    : 25.85%  |  y_test anomaly: 0.20%
+70.6s 100 Models A (LSTM-AE), B (CNN1D-AE), C (Transformer-AE) defined.
+70.6s 101 Classical: D (Isolation Forest), E (One-Class SVM) — trained in Section 6.
+70.6s 102 Utilities ready.
+70.7s 103 
+70.7s 104 [1/5] Training LSTM-AE ...
+89.6s 105 Epoch  10  loss=0.002852
+102.4s 106 Epoch  20  loss=0.001844
+115.1s 107 Epoch  30  loss=0.001518
+128.1s 108 Epoch  40  loss=0.001332
+140.8s 109 Epoch  50  loss=0.001247
+153.7s 110 Epoch  60  loss=0.001180
+166.4s 111 Epoch  70  loss=0.001158
+179.2s 112 Epoch  80  loss=0.001100
+192.1s 113 Epoch  90  loss=0.001086
+204.8s 114 Epoch 100  loss=0.001119
+204.8s 115 Val F2=0.0839  Val F1=0.1179  |  Test F1=0.0581  (134.1s)
+204.8s 116 
+204.8s 117 [2/5] Training CNN1D-AE ...
+214.0s 118 Epoch  10  loss=0.001747
+222.4s 119 Epoch  20  loss=0.001475
+230.8s 120 Epoch  30  loss=0.001351
+239.1s 121 Epoch  40  loss=0.001300
+247.7s 122 Epoch  50  loss=0.001250
+256.1s 123 Epoch  60  loss=0.001226
+264.4s 124 Epoch  70  loss=0.001213
+272.7s 125 Epoch  80  loss=0.001186
+281.0s 126 Epoch  90  loss=0.001156
+289.3s 127 Epoch 100  loss=0.001162
+289.3s 128 Val F2=0.1104  Val F1=0.1552  |  Test F1=0.0640  (84.6s)
+289.3s 129 
+289.3s 130 [3/5] Training Transformer-AE ...
+322.8s 131 Epoch  10  loss=0.001047
+355.8s 132 Epoch  20  loss=0.000952
+389.1s 133 Epoch  30  loss=0.000913
+422.4s 134 Epoch  40  loss=0.000899
+455.4s 135 Epoch  50  loss=0.000900
+488.4s 136 Epoch  60  loss=0.000886
+521.3s 137 Epoch  70  loss=0.000893
+554.4s 138 Epoch  80  loss=0.000882
+560.9s 139 EarlyStop @ 82  best=0.000880
+561.1s 140 Val F2=0.0475  Val F1=0.0668  |  Test F1=0.0698  (271.6s)
+561.1s 141 
+561.1s 142 [4/5] Training Isolation Forest ...
+561.8s 143 F1=0.0465  (0.6s)
+561.8s 144 
+561.8s 145 [5/5] Training One-Class SVM ...
+564.0s 146 F1=0.0523  (2.4s)
+564.0s 147 
+564.0s 148 === Model Comparison (metrics on hold-out TEST — reference only; selection uses VAL) ===
+564.0s 149 LSTM-AE  CNN1D-AE  Transformer-AE  IForest   OCSVM
+564.0s 150 f1          0.0581    0.0640          0.0698   0.0465  0.0523
+564.0s 151 f2          0.1305    0.1436          0.1567   0.1044  0.1175
+564.0s 152 precision   0.0302    0.0332          0.0363   0.0242  0.0272
+564.0s 153 recall      0.7692    0.8462          0.9231   0.6154  0.6923
+564.0s 154 roc_auc     0.8732    0.9234          0.9711   0.8155  0.8121
+564.0s 155 pr_auc      0.5658    0.6392          0.6085   0.4688  0.5067
+564.0s 156 =======================================================
+564.0s 157 AUTO-SELECTED BEST MODEL: CNN1D-AE  (by Val F2, β=2)
+564.0s 158 Val F2 (선정 기준) : 0.1104
+564.0s 159 Val F1 (참고)      : 0.1552
+564.0s 160 Val PR-AUC         : 0.5835
+564.0s 161 Test F2 (참고)     : 0.1436
+564.0s 162 Test F1 (참고)     : 0.0640
+564.0s 163 Test ROC-AUC       : 0.9234
+564.0s 164 Test PR-AUC        : 0.6392
+564.0s 165 → Section 7에서 이 모델만 Optuna 튜닝 (Val F2)
+564.0s 166 =======================================================
+564.2s 167 Building window cache (upfront)...
+564.8s 168 Cache ready: [30, 50, 100, 150]
+564.8s 169 Optuna target: CNN1D-AE  |  n_trials=500
+611.8s 170 [Trial 0] New best Val F2=0.1935 → saved
+662.7s 171 [Trial 1] New best Val F2=0.2965 → saved
+841.7s 172 [Trial 9] New best Val F2=0.3220 → saved
+914.7s 173 [Trial 11] New best Val F2=0.3260 → saved
+1035.2s 174 [Trial 15] New best Val F2=0.3730 → saved
+1364.9s 175 [Trial 33] New best Val F2=0.3795 → saved
+1946.5s 176 [Trial 64] New best Val F2=0.4004 → saved
+1960.9s 177 [Trial 65] New best Val F2=0.4078 → saved
+2705.2s 178 [Trial 123] New best Val F2=0.4098 → saved
+3242.0s 179 [Trial 169] New best Val F2=0.4112 → saved
+11252.1s 180 
+11252.1s 181 Optuna Best Val F2 : 0.4112
+11252.1s 182 Sec.6 default Val F2 (same model, pre-Optuna): 0.1104
+11252.1s 183 Sec.6 Test F2/F1 (참고): 0.1436 / 0.0640
+11252.1s 184 Best Params        : {'hidden': 128, 'latent': 8, 'dropout': 0.05, 'lr': 0.006958497926806566, 'weight_decay': 1.0866644771339051e-05, 'batch': 256, 'optimizer': 'AdamW', 'threshold_pct': 90, 'window_size': 100, 'n_layers': 2}
+11252.2s 185 Retraining CNN1D-AE with tuned params: {'hidden': 128, 'latent': 8, 'dropout': 0.05, 'lr': 0.006958497926806566, 'weight_decay': 1.0866644771339051e-05, 'batch': 256, 'optimizer': 'AdamW', 'threshold_pct': 90, 'window_size': 100, 'n_layers': 2}
+11252.2s 186 → window_size=100 (train/val/test 텐서는 WINDOW_CACHE와 동일)
+11256.1s 187 Epoch  10  loss=0.007129
+11259.7s 188 Epoch  20  loss=0.006027
+11263.3s 189 Epoch  30  loss=0.005670
+11263.3s 190 
+11263.3s 191 === Final Tuned Model: CNN1D-AE ===
+11263.3s 192 F2        : 0.0888  F1: 0.0383  (Sec.6 test F2/F1: 0.1436/0.0640, val F2/F1: 0.1104/0.1552)
+11263.3s 193 Precision : 0.0197
+11263.3s 194 Recall    : 0.7222
+11263.3s 195 ROC-AUC   : 0.8209
+11263.3s 196 PR-AUC    : 0.5853
+11263.3s 197 Threshold : 0.032959
+11263.4s 198 
+11263.4s 199 === Final Comparison Table ===
+11263.4s 200 F1      F2    Prec  Recall  ROC-AUC  PR-AUC Time(s)     Type
+11263.4s 201 Model
+11263.4s 202 LSTM-AE           0.0581  0.1305  0.0302  0.7692   0.8732  0.5658   134.1  Default
+11263.4s 203 CNN1D-AE          0.0640  0.1436  0.0332  0.8462   0.9234  0.6392    84.6  Default
+11263.4s 204 Transformer-AE    0.0698  0.1567  0.0363  0.9231   0.9711  0.6085   271.6  Default
+11263.4s 205 IForest           0.0465  0.1044  0.0242  0.6154   0.8155  0.4688     0.6  Default
+11263.4s 206 OCSVM             0.0523  0.1175  0.0272  0.6923   0.8121  0.5067     2.4  Default
+11263.4s 207 CNN1D-AE (Tuned)  0.0383  0.0888  0.0197  0.7222   0.8209  0.5853       -    Tuned
+11263.4s 208 # Anomaly Report — CNN1D-AE (Tuned) (Rule-based Demo)
+11263.4s 209 F1=0.0383  ROC-AUC=0.8209
+11263.4s 210 Detected segments: 52
+11263.4s 211 
+11263.4s 212 Segment 1: idx 73~89 (16 windows)
+11263.4s 213 Severity=MEDIUM  max_err=0.05001
+11263.4s 214 
+11263.4s 215 Segment 2: idx 973~999 (26 windows)
+11263.4s 216 Severity=MEDIUM  max_err=0.09026
+11263.4s 217 
+11263.4s 218 Segment 3: idx 1216~1229 (13 windows)
+11263.4s 219 Severity=HIGH  max_err=0.14320
+11263.4s 220 
+11263.4s 221 Segment 4: idx 1236~1238 (2 windows)
+11263.4s 222 Severity=LOW  max_err=0.03347
+11263.4s 223 
+11263.4s 224 Segment 5: idx 1269~1280 (11 windows)
+11263.4s 225 Severity=MEDIUM  max_err=0.06934
+11263.4s 226 
+11263.4s 227 Segment 6: idx 2204~2233 (29 windows)
+11263.4s 228 Severity=LOW  max_err=0.04315
+11263.4s 229 
+11263.4s 230 Segment 7: idx 2682~2694 (12 windows)
+11263.4s 231 Severity=LOW  max_err=0.04340
+11263.4s 232 
+11263.4s 233 Segment 8: idx 3501~3502 (1 windows)
+11263.4s 234 Severity=LOW  max_err=0.03338
+11263.4s 235 
+11263.4s 236 Segment 9: idx 3569~3578 (9 windows)
+11263.4s 237 Severity=LOW  max_err=0.03478
+11263.4s 238 
+11263.4s 239 Segment 10: idx 3594~3602 (8 windows)
+11263.4s 240 Severity=LOW  max_err=0.03673
+11263.4s 241 
+11263.4s 242 Segment 11: idx 3881~3883 (2 windows)
+11263.4s 243 Severity=LOW  max_err=0.03308
+11263.4s 244 
+11263.4s 245 Segment 12: idx 3885~3908 (23 windows)
+11263.4s 246 Severity=LOW  max_err=0.04051
+11263.4s 247 
+11263.4s 248 Segment 13: idx 4021~4042 (21 windows)
+11263.4s 249 Severity=LOW  max_err=0.03638
+11263.4s 250 
+11263.4s 251 Segment 14: idx 4068~4076 (8 windows)
+11263.4s 252 Severity=LOW  max_err=0.03481
+11263.4s 253 
+11263.4s 254 Segment 15: idx 4115~4116 (1 windows)
+11263.4s 255 Severity=LOW  max_err=0.03303
+11263.4s 256 
+11263.4s 257 Segment 16: idx 4173~4178 (5 windows)
+11263.4s 258 Severity=LOW  max_err=0.03494
+11263.4s 259 
+11263.4s 260 Segment 17: idx 4270~4275 (5 windows)
+11263.4s 261 Severity=LOW  max_err=0.03434
+11263.4s 262 
+11263.4s 263 Segment 18: idx 4413~4420 (7 windows)
+11263.4s 264 Severity=LOW  max_err=0.03732
+11263.4s 265 
+11263.4s 266 Segment 19: idx 4564~4573 (9 windows)
+11263.4s 267 Severity=LOW  max_err=0.03501
+11263.4s 268 
+11263.4s 269 Segment 20: idx 4574~4586 (12 windows)
+11263.4s 270 Severity=LOW  max_err=0.04238
+11263.4s 271 
+11263.4s 272 Segment 21: idx 4731~4749 (18 windows)
+11263.4s 273 Severity=MEDIUM  max_err=0.06200
+11263.4s 274 
+11263.4s 275 Segment 22: idx 4996~4998 (2 windows)
+11263.4s 276 Severity=LOW  max_err=0.03314
+11263.4s 277 
+11263.4s 278 Segment 23: idx 5000~5022 (22 windows)
+11263.4s 279 Severity=LOW  max_err=0.03635
+11263.4s 280 
+11263.4s 281 Segment 24: idx 5043~5058 (15 windows)
+11263.4s 282 Severity=LOW  max_err=0.03840
+11263.4s 283 
+11263.4s 284 Segment 25: idx 5148~5152 (4 windows)
+11263.4s 285 Severity=LOW  max_err=0.03554
+11263.4s 286 
+11263.4s 287 Segment 26: idx 5179~5182 (3 windows)
+11263.4s 288 Severity=LOW  max_err=0.03427
+11263.4s 289 
+11263.4s 290 Segment 27: idx 5218~5219 (1 windows)
+11263.4s 291 Severity=LOW  max_err=0.03296
+11263.4s 292 
+11263.4s 293 Segment 28: idx 5264~5281 (17 windows)
+11263.4s 294 Severity=LOW  max_err=0.03766
+11263.4s 295 
+11263.4s 296 Segment 29: idx 5332~5348 (16 windows)
+11263.4s 297 Severity=MEDIUM  max_err=0.04963
+11263.4s 298 
+11263.4s 299 Segment 30: idx 5504~5518 (14 windows)
+11263.4s 300 Severity=LOW  max_err=0.04792
+11263.4s 301 
+11263.4s 302 Segment 31: idx 5533~5535 (2 windows)
+11263.4s 303 Severity=LOW  max_err=0.03324
+11263.4s 304 
+11263.4s 305 Segment 32: idx 5670~5691 (21 windows)
+11263.4s 306 Severity=LOW  max_err=0.04772
+11263.4s 307 
+11263.4s 308 Segment 33: idx 5748~5759 (11 windows)
+11263.4s 309 Severity=LOW  max_err=0.04133
+11263.4s 310 
+11263.4s 311 Segment 34: idx 5854~5859 (5 windows)
+11263.4s 312 Severity=LOW  max_err=0.03331
+11263.4s 313 
+11263.4s 314 Segment 35: idx 5878~5889 (11 windows)
+11263.4s 315 Severity=LOW  max_err=0.04380
+11263.4s 316 
+11263.4s 317 Segment 36: idx 5943~5978 (35 windows)
+11263.4s 318 Severity=LOW  max_err=0.04357
+11263.4s 319 
+11263.4s 320 Segment 37: idx 5994~6007 (13 windows)
+11263.4s 321 Severity=LOW  max_err=0.03843
+11263.4s 322 
+11263.4s 323 Segment 38: idx 6009~6019 (10 windows)
+11263.4s 324 Severity=LOW  max_err=0.03627
+11263.4s 325 
+11263.4s 326 Segment 39: idx 6033~6035 (2 windows)
+11263.4s 327 Severity=LOW  max_err=0.03313
+11263.4s 328 
+11263.4s 329 Segment 40: idx 6125~6139 (14 windows)
+11263.4s 330 Severity=LOW  max_err=0.03628
+11263.4s 331 
+11263.4s 332 Segment 41: idx 6150~6198 (48 windows)
+11263.4s 333 Severity=MEDIUM  max_err=0.05401
+11263.4s 334 
+11263.4s 335 Segment 42: idx 6199~6211 (12 windows)
+11263.4s 336 Severity=LOW  max_err=0.03666
+11263.4s 337 
+11263.4s 338 Segment 43: idx 6215~6240 (25 windows)
+11263.4s 339 Severity=LOW  max_err=0.04472
+11263.4s 340 
+11263.4s 341 Segment 44: idx 6256~6259 (3 windows)
+11263.4s 342 Severity=LOW  max_err=0.03427
+11263.4s 343 
+11263.4s 344 Segment 45: idx 6299~6310 (11 windows)
+11263.4s 345 Severity=LOW  max_err=0.04720
+11263.4s 346 
+11263.4s 347 Segment 46: idx 6433~6447 (14 windows)
+11263.4s 348 Severity=LOW  max_err=0.04524
+11263.4s 349 
+11263.4s 350 Segment 47: idx 6453~6464 (11 windows)
+11263.4s 351 Severity=LOW  max_err=0.03730
+11263.4s 352 
+11263.4s 353 Segment 48: idx 6481~6495 (14 windows)
+11263.4s 354 Severity=LOW  max_err=0.03980
+11263.4s 355 
+11263.4s 356 Segment 49: idx 6500~6501 (1 windows)
+11263.4s 357 Severity=LOW  max_err=0.03299
+11263.4s 358 
+11263.4s 359 Segment 50: idx 6503~6550 (47 windows)
+11263.4s 360 Severity=MEDIUM  max_err=0.05438
+11263.4s 361 
+11263.4s 362 Segment 51: idx 6564~6572 (8 windows)
+11263.4s 363 Severity=LOW  max_err=0.03803
+11263.4s 364 
+11263.4s 365 Segment 52: idx 6583~6593 (10 windows)
+11263.4s 366 Severity=LOW  max_err=0.04506
+11263.4s 367 
+11263.4s 368 Recommendation:
+11263.4s 369 Immediate: Check pump seals, bearings, and pressure relief valves.
+11263.4s 370 Short-term: Increase sensor sampling rate for anomalous channels.
+11263.4s 371 Long-term: Schedule preventive maintenance within 48h if HIGH detected.
+11263.7s 372 Gradio app ready.
+11264.2s 373 * Running on local URL:  http://127.0.0.1:7860
+11265.2s 374 * Running on public URL: https://cc1ee46b69fedd3450.gradio.live
+11265.2s 375 
+11265.2s 376 This share link expires in 1 week. For free permanent hosting and GPU upgrades, run `gradio deploy` from the terminal in the working directory to deploy to Hugging Face Spaces (https://huggingface.co/spaces)
+11270.5s 377 /usr/local/lib/python3.12/dist-packages/mistune.py:435: SyntaxWarning: invalid escape sequence '\|'
+11270.5s 378 cells[i][c] = re.sub('\\\\\|', '|', cell)
+11270.6s 379 /usr/local/lib/python3.12/dist-packages/nbconvert/filters/filter_links.py:36: SyntaxWarning: invalid escape sequence '\_'
+11270.6s 380 text = re.sub(r'_', '\_', text) # Escape underscores in display text
+11271.2s 381 [NbConvertApp] Converting notebook __notebook__.ipynb to notebook
+11271.6s 382 [NbConvertApp] Writing 92434 bytes to __notebook__.ipynb
+11273.9s 383 [NbConvertApp] Converting notebook __notebook__.ipynb to html
+11274.8s 384 [NbConvertApp] Writing 499989 bytes to __results__.html

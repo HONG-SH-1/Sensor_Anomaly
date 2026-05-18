@@ -1,0 +1,513 @@
+7.7s 1 0.00s - Debugger warning: It seems that frozen modules are being used, which may
+7.7s 2 0.00s - make the debugger miss breakpoints. Please pass -Xfrozen_modules=off
+7.7s 3 0.00s - to python to disable frozen modules.
+7.7s 4 0.00s - Note: Debugging will proceed. Set PYDEVD_DISABLE_FILE_VALIDATION=1 to disable this validation.
+8.3s 5 0.00s - Debugger warning: It seems that frozen modules are being used, which may
+8.3s 6 0.00s - make the debugger miss breakpoints. Please pass -Xfrozen_modules=off
+8.3s 7 0.00s - to python to disable frozen modules.
+8.3s 8 0.00s - Note: Debugging will proceed. Set PYDEVD_DISABLE_FILE_VALIDATION=1 to disable this validation.
+33.5s 9 Mode   : TUNING (속도 최우선)
+33.5s 10 Device : cuda
+33.5s 11 Data   : /kaggle/input/datasets/nphantawee/pump-sensor-data/sensor.csv
+33.5s 12 Config OK.
+33.6s 13 ✅ 파일 탐색 성공: /kaggle/input/datasets/nphantawee/pump-sensor-data/sensor.csv
+33.6s 14 ✅ 데이터 읽기 성공! Shape (샘플): (5, 55)
+33.6s 15 📊 센서 컬럼 개수: 52개
+33.6s 16 📊 레이블(machine_status) 존재: YES
+33.6s 17 
+33.6s 18 === 데이터 상위 3행 샘플 ===
+33.6s 19 
+33.6s 20 💻 실행 디바이스: cuda
+33.6s 21 📂 모델 저장 경로: /kaggle/working/models
+38.2s 22 Shape         : (220320, 54)
+38.2s 23 Sensor cols   : 52
+38.2s 24 Date range    : 2018-04-01 00:00:00 ~ 2018-08-31 23:59:00
+38.2s 25 
+38.2s 26 machine_status counts:
+38.2s 27 machine_status
+38.2s 28 NORMAL        205836
+38.2s 29 RECOVERING     14477
+38.2s 30 BROKEN             7
+38.2s 31 Name: count, dtype: int64
+38.4s 32 Dropped by missing: ['sensor_15']
+38.4s 33 Remaining sensors : 51
+41.0s 34 === VIF Before Elimination (top 15) ===
+41.0s 35 feature         VIF
+41.0s 36 sensor_20 7355.488165
+41.0s 37 sensor_21 5149.107728
+41.0s 38 sensor_19 4844.920093
+41.0s 39 sensor_08 1979.550499
+41.0s 40 sensor_02 1837.463999
+41.0s 41 sensor_03 1619.169801
+41.0s 42 sensor_07 1308.595717
+41.0s 43 sensor_23 1203.416779
+41.0s 44 sensor_14 1070.459667
+41.0s 45 sensor_09  920.978077
+41.0s 46 sensor_25  919.915516
+41.0s 47 sensor_01  873.760475
+41.0s 48 sensor_22  866.496716
+41.0s 49 sensor_16  825.981352
+41.0s 50 sensor_17  674.914081
+41.2s 51 
+41.2s 52 === Iterative VIF Elimination ===
+43.7s 53 [step 1] Done — all VIF <= 9999.0
+46.0s 54 
+46.0s 55 Original   : 51 sensors
+46.0s 56 Dropped (VIF)    : []
+46.0s 57 Dropped (zero-var): []
+46.0s 58 FINAL : 51 features
+46.0s 59 
+46.0s 60 Final features: ['sensor_00', 'sensor_01', 'sensor_02', 'sensor_03', 'sensor_04', 'sensor_05', 'sensor_06', 'sensor_07', 'sensor_08', 'sensor_09', 'sensor_10', 'sensor_11', 'sensor_12', 'sensor_13', 'sensor_14', 'sensor_16', 'sensor_17', 'sensor_18', 'sensor_19', 'sensor_20', 'sensor_21', 'sensor_22', 'sensor_23', 'sensor_24', 'sensor_25', 'sensor_26', 'sensor_27', 'sensor_28', 'sensor_29', 'sensor_30', 'sensor_31', 'sensor_32', 'sensor_33', 'sensor_34', 'sensor_35', 'sensor_36', 'sensor_37', 'sensor_38', 'sensor_39', 'sensor_40', 'sensor_41', 'sensor_42', 'sensor_43', 'sensor_44', 'sensor_45', 'sensor_46', 'sensor_47', 'sensor_48', 'sensor_49', 'sensor_50', 'sensor_51']
+46.8s 61 [Split] n=220320 | train 121176 | val 33048 | test 66096
+46.8s 62 [Split] anomaly %  train 4.93% | val 25.52% | test 0.11%
+47.0s 63 Scaler        : minmax
+47.0s 64 Scaled range  : [-1.052, 5.048]
+47.0s 65 Train / val / test shapes: (121176, 51), (33048, 51), (66096, 51)
+47.5s 66 X_train (normal) : torch.Size([11496, 50, 51])  — Autoencoder 학습용
+47.5s 67 X_val (all)      : torch.Size([3300, 50, 51])
+47.5s 68 X_test (all)     : torch.Size([6605, 50, 51])
+47.5s 69 y_val anomaly    : 25.85%  |  y_test anomaly: 0.20%
+47.6s 70 Models A (LSTM-AE), B (CNN1D-AE), C (Transformer-AE) defined.
+47.6s 71 Classical: D (Isolation Forest), E (One-Class SVM) — trained in Section 6.
+47.6s 72 Utilities ready.
+47.7s 73 
+47.7s 74 [1/5] Training LSTM-AE ...
+68.0s 75 Epoch  10  loss=0.005050
+81.7s 76 Epoch  20  loss=0.002980
+95.3s 77 Epoch  30  loss=0.001950
+108.7s 78 Epoch  40  loss=0.001638
+122.2s 79 Epoch  50  loss=0.001356
+135.5s 80 Epoch  60  loss=0.001293
+148.9s 81 Epoch  70  loss=0.001206
+162.2s 82 Epoch  80  loss=0.001077
+175.3s 83 Epoch  90  loss=0.001062
+188.4s 84 Epoch 100  loss=0.001003
+188.4s 85 Val F2=0.2292  Val F1=0.3222  |  Test F1=0.0698  (140.8s)
+188.4s 86 
+188.4s 87 [2/5] Training CNN1D-AE ...
+198.1s 88 Epoch  10  loss=0.002309
+206.8s 89 Epoch  20  loss=0.001770
+215.3s 90 Epoch  30  loss=0.001515
+224.0s 91 Epoch  40  loss=0.001366
+232.6s 92 Epoch  50  loss=0.001247
+241.2s 93 Epoch  60  loss=0.001177
+249.7s 94 Epoch  70  loss=0.001152
+258.3s 95 Epoch  80  loss=0.001098
+266.8s 96 Epoch  90  loss=0.001075
+275.3s 97 Epoch 100  loss=0.001061
+275.3s 98 Val F2=0.1887  Val F1=0.2652  |  Test F1=0.0698  (86.9s)
+275.3s 99 
+275.3s 100 [3/5] Training Transformer-AE ...
+309.6s 101 Epoch  10  loss=0.000980
+344.6s 102 Epoch  20  loss=0.000726
+379.4s 103 Epoch  30  loss=0.000655
+414.6s 104 Epoch  40  loss=0.000621
+448.7s 105 Epoch  50  loss=0.000602
+482.6s 106 Epoch  60  loss=0.000595
+516.4s 107 Epoch  70  loss=0.000583
+550.7s 108 Epoch  80  loss=0.000589
+585.3s 109 Epoch  90  loss=0.000581
+619.9s 110 Epoch 100  loss=0.000578
+620.1s 111 Val F2=0.2027  Val F1=0.2849  |  Test F1=0.0698  (344.6s)
+620.1s 112 
+620.1s 113 [4/5] Training Isolation Forest ...
+620.9s 114 F1=0.0640  (0.6s)
+620.9s 115 
+620.9s 116 [5/5] Training One-Class SVM ...
+628.3s 117 F1=0.0640  (7.6s)
+628.3s 118 
+628.3s 119 === Model Comparison (metrics on hold-out TEST — reference only; selection uses VAL) ===
+628.3s 120 LSTM-AE  CNN1D-AE  Transformer-AE  IForest   OCSVM
+628.3s 121 f1          0.0698    0.0698          0.0698   0.0640  0.0640
+628.3s 122 f2          0.1567    0.1567          0.1567   0.1436  0.1436
+628.3s 123 precision   0.0363    0.0363          0.0363   0.0332  0.0332
+628.3s 124 recall      0.9231    0.9231          0.9231   0.8462  0.8462
+628.3s 125 roc_auc     0.9442    0.9412          0.9913   0.8953  0.9013
+628.3s 126 pr_auc      0.5921    0.5940          0.6765   0.5266  0.6266
+628.3s 127 =======================================================
+628.3s 128 AUTO-SELECTED BEST MODEL: LSTM-AE  (by Val F2, β=2)
+628.3s 129 Val F2 (선정 기준) : 0.2292
+628.3s 130 Val F1 (참고)      : 0.3222
+628.3s 131 Val PR-AUC         : 0.6165
+628.3s 132 Test F2 (참고)     : 0.1567
+628.3s 133 Test F1 (참고)     : 0.0698
+628.3s 134 Test ROC-AUC       : 0.9442
+628.3s 135 Test PR-AUC        : 0.5921
+628.3s 136 → Section 7에서 이 모델만 Optuna 튜닝 (Val F2)
+628.3s 137 =======================================================
+628.5s 138 Building window cache (upfront)...
+629.6s 139 Cache ready: [30, 50, 100, 150]
+629.6s 140 Optuna target: LSTM-AE  |  n_trials=500
+714.4s 141 [Trial 0] New best Val F2=0.3170 → saved
+766.1s 142 [Trial 2] New best Val F2=0.3197 → saved
+905.2s 143 [Trial 5] New best Val F2=0.3701 → saved
+1072.3s 144 [Trial 10] New best Val F2=0.3821 → saved
+1090.1s 145 [Trial 11] New best Val F2=0.4409 → saved
+2533.8s 146 [Trial 46] New best Val F2=0.4441 → saved
+12809.7s 147 
+12809.7s 148 Optuna Best Val F2 : 0.4441
+12809.7s 149 Sec.6 default Val F2 (same model, pre-Optuna): 0.2292
+12809.7s 150 Sec.6 Test F2/F1 (참고): 0.1567 / 0.0698
+12809.7s 151 Best Params        : {'hidden': 32, 'latent': 8, 'n_layers': 2, 'dropout': 0.05, 'lr': 0.0012212905780429229, 'weight_decay': 3.0513963453777867e-06, 'batch': 128, 'optimizer': 'Adam', 'threshold_pct': 90, 'window_size': 30}
+12809.9s 152 Retraining LSTM-AE with tuned params: {'hidden': 32, 'latent': 8, 'n_layers': 2, 'dropout': 0.05, 'lr': 0.0012212905780429229, 'weight_decay': 3.0513963453777867e-06, 'batch': 128, 'optimizer': 'Adam', 'threshold_pct': 90, 'window_size': 30}
+12809.9s 153 → window_size=30 (train/val/test 텐서는 WINDOW_CACHE와 동일)
+12817.7s 154 Epoch  10  loss=0.005156
+12825.4s 155 Epoch  20  loss=0.003992
+12833.0s 156 Epoch  30  loss=0.003782
+12833.0s 157 
+12833.0s 158 === Final Tuned Model: LSTM-AE ===
+12833.0s 159 F2        : 0.0709  F1: 0.0298  (Sec.6 test F2/F1: 0.1567/0.0698, val F2/F1: 0.2292/0.3222)
+12833.0s 160 Precision : 0.0151
+12833.0s 161 Recall    : 0.9091
+12833.0s 162 ROC-AUC   : 0.9294
+12833.0s 163 PR-AUC    : 0.5871
+12833.0s 164 Threshold : 0.023781
+12833.0s 165 
+12833.0s 166 === Final Comparison Table ===
+12833.0s 167 F1      F2    Prec  Recall  ROC-AUC  PR-AUC Time(s)     Type
+12833.0s 168 Model
+12833.0s 169 LSTM-AE          0.0698  0.1567  0.0363  0.9231   0.9442  0.5921   140.8  Default
+12833.0s 170 CNN1D-AE         0.0698  0.1567  0.0363  0.9231   0.9412  0.5940    86.9  Default
+12833.0s 171 Transformer-AE   0.0698  0.1567  0.0363  0.9231   0.9913  0.6765   344.6  Default
+12833.0s 172 IForest          0.0640  0.1436  0.0332  0.8462   0.8953  0.5266     0.6  Default
+12833.0s 173 OCSVM            0.0640  0.1436  0.0332  0.8462   0.9013  0.6266     7.6  Default
+12833.0s 174 LSTM-AE (Tuned)  0.0298  0.0709  0.0151  0.9091   0.9294  0.5871       -    Tuned
+12833.1s 175 # Anomaly Report — LSTM-AE (Tuned) (Rule-based Demo)
+12833.1s 176 F1=0.0298  ROC-AUC=0.9294
+12833.1s 177 Detected segments: 106
+12833.1s 178 
+12833.1s 179 Segment 1: idx 76~91 (15 windows)
+12833.1s 180 Severity=MEDIUM  max_err=0.06156
+12833.1s 181 
+12833.1s 182 Segment 2: idx 93~106 (13 windows)
+12833.1s 183 Severity=LOW  max_err=0.02870
+12833.1s 184 
+12833.1s 185 Segment 3: idx 313~315 (2 windows)
+12833.1s 186 Severity=LOW  max_err=0.02442
+12833.1s 187 
+12833.1s 188 Segment 4: idx 979~983 (4 windows)
+12833.1s 189 Severity=MEDIUM  max_err=0.04033
+12833.1s 190 
+12833.1s 191 Segment 5: idx 985~986 (1 windows)
+12833.1s 192 Severity=LOW  max_err=0.02431
+12833.1s 193 
+12833.1s 194 Segment 6: idx 988~999 (11 windows)
+12833.1s 195 Severity=HIGH  max_err=0.10423
+12833.1s 196 
+12833.1s 197 Segment 7: idx 1220~1246 (26 windows)
+12833.1s 198 Severity=HIGH  max_err=0.23438
+12833.1s 199 
+12833.1s 200 Segment 8: idx 1275~1281 (6 windows)
+12833.1s 201 Severity=HIGH  max_err=0.08714
+12833.1s 202 
+12833.1s 203 Segment 9: idx 1761~1762 (1 windows)
+12833.1s 204 Severity=LOW  max_err=0.02507
+12833.1s 205 
+12833.1s 206 Segment 10: idx 2103~2104 (1 windows)
+12833.1s 207 Severity=LOW  max_err=0.02393
+12833.1s 208 
+12833.1s 209 Segment 11: idx 2208~2223 (15 windows)
+12833.1s 210 Severity=LOW  max_err=0.02946
+12833.1s 211 
+12833.1s 212 Segment 12: idx 2227~2233 (6 windows)
+12833.1s 213 Severity=LOW  max_err=0.03037
+12833.1s 214 
+12833.1s 215 Segment 13: idx 2236~2238 (2 windows)
+12833.1s 216 Severity=LOW  max_err=0.02543
+12833.1s 217 
+12833.1s 218 Segment 14: idx 2271~2272 (1 windows)
+12833.1s 219 Severity=LOW  max_err=0.02399
+12833.1s 220 
+12833.1s 221 Segment 15: idx 2680~2745 (65 windows)
+12833.1s 222 Severity=MEDIUM  max_err=0.04876
+12833.1s 223 
+12833.1s 224 Segment 16: idx 3068~3078 (10 windows)
+12833.1s 225 Severity=MEDIUM  max_err=0.04619
+12833.1s 226 
+12833.1s 227 Segment 17: idx 3079~3080 (1 windows)
+12833.1s 228 Severity=LOW  max_err=0.02450
+12833.1s 229 
+12833.1s 230 Segment 18: idx 3085~3087 (2 windows)
+12833.1s 231 Severity=LOW  max_err=0.02540
+12833.1s 232 
+12833.1s 233 Segment 19: idx 3103~3107 (4 windows)
+12833.1s 234 Severity=LOW  max_err=0.03435
+12833.1s 235 
+12833.1s 236 Segment 20: idx 3382~3385 (3 windows)
+12833.1s 237 Severity=LOW  max_err=0.02813
+12833.1s 238 
+12833.1s 239 Segment 21: idx 3499~3511 (12 windows)
+12833.1s 240 Severity=LOW  max_err=0.02671
+12833.1s 241 
+12833.1s 242 Segment 22: idx 3513~3515 (2 windows)
+12833.1s 243 Severity=LOW  max_err=0.02425
+12833.1s 244 
+12833.1s 245 Segment 23: idx 3573~3574 (1 windows)
+12833.1s 246 Severity=LOW  max_err=0.02379
+12833.1s 247 
+12833.1s 248 Segment 24: idx 3575~3579 (4 windows)
+12833.1s 249 Severity=LOW  max_err=0.02757
+12833.1s 250 
+12833.1s 251 Segment 25: idx 3600~3605 (5 windows)
+12833.1s 252 Severity=LOW  max_err=0.02874
+12833.1s 253 
+12833.1s 254 Segment 26: idx 3727~3728 (1 windows)
+12833.1s 255 Severity=LOW  max_err=0.02523
+12833.1s 256 
+12833.1s 257 Segment 27: idx 3803~3807 (4 windows)
+12833.1s 258 Severity=LOW  max_err=0.02812
+12833.1s 259 
+12833.1s 260 Segment 28: idx 3892~3910 (18 windows)
+12833.1s 261 Severity=LOW  max_err=0.02919
+12833.1s 262 
+12833.1s 263 Segment 29: idx 3942~3946 (4 windows)
+12833.1s 264 Severity=LOW  max_err=0.02773
+12833.1s 265 
+12833.1s 266 Segment 30: idx 3977~3979 (2 windows)
+12833.1s 267 Severity=LOW  max_err=0.02441
+12833.1s 268 
+12833.1s 269 Segment 31: idx 4025~4031 (6 windows)
+12833.1s 270 Severity=LOW  max_err=0.02613
+12833.1s 271 
+12833.1s 272 Segment 32: idx 4035~4039 (4 windows)
+12833.1s 273 Severity=LOW  max_err=0.02604
+12833.1s 274 
+12833.1s 275 Segment 33: idx 4044~4048 (4 windows)
+12833.1s 276 Severity=LOW  max_err=0.02594
+12833.1s 277 
+12833.1s 278 Segment 34: idx 4074~4080 (6 windows)
+12833.1s 279 Severity=LOW  max_err=0.02933
+12833.1s 280 
+12833.1s 281 Segment 35: idx 4091~4095 (4 windows)
+12833.1s 282 Severity=MEDIUM  max_err=0.05527
+12833.1s 283 
+12833.1s 284 Segment 36: idx 4096~4105 (9 windows)
+12833.1s 285 Severity=LOW  max_err=0.02519
+12833.1s 286 
+12833.1s 287 Segment 37: idx 4108~4111 (3 windows)
+12833.1s 288 Severity=LOW  max_err=0.02486
+12833.1s 289 
+12833.1s 290 Segment 38: idx 4120~4123 (3 windows)
+12833.1s 291 Severity=LOW  max_err=0.02476
+12833.1s 292 
+12833.1s 293 Segment 39: idx 4128~4129 (1 windows)
+12833.1s 294 Severity=LOW  max_err=0.02448
+12833.1s 295 
+12833.1s 296 Segment 40: idx 4143~4146 (3 windows)
+12833.1s 297 Severity=LOW  max_err=0.02441
+12833.1s 298 
+12833.1s 299 Segment 41: idx 4177~4183 (6 windows)
+12833.1s 300 Severity=LOW  max_err=0.02599
+12833.1s 301 
+12833.1s 302 Segment 42: idx 4190~4194 (4 windows)
+12833.1s 303 Severity=LOW  max_err=0.02611
+12833.1s 304 
+12833.1s 305 Segment 43: idx 4273~4279 (6 windows)
+12833.1s 306 Severity=MEDIUM  max_err=0.04182
+12833.1s 307 
+12833.1s 308 Segment 44: idx 4416~4421 (5 windows)
+12833.1s 309 Severity=LOW  max_err=0.02891
+12833.1s 310 
+12833.1s 311 Segment 45: idx 4574~4576 (2 windows)
+12833.1s 312 Severity=LOW  max_err=0.02472
+12833.1s 313 
+12833.1s 314 Segment 46: idx 4581~4586 (5 windows)
+12833.1s 315 Severity=MEDIUM  max_err=0.03587
+12833.1s 316 
+12833.1s 317 Segment 47: idx 4658~4661 (3 windows)
+12833.1s 318 Severity=LOW  max_err=0.02590
+12833.1s 319 
+12833.1s 320 Segment 48: idx 4673~4677 (4 windows)
+12833.1s 321 Severity=LOW  max_err=0.02617
+12833.1s 322 
+12833.1s 323 Segment 49: idx 4708~4711 (3 windows)
+12833.1s 324 Severity=LOW  max_err=0.03515
+12833.1s 325 
+12833.1s 326 Segment 50: idx 4736~4749 (13 windows)
+12833.1s 327 Severity=MEDIUM  max_err=0.04965
+12833.1s 328 
+12833.1s 329 Segment 51: idx 4756~4760 (4 windows)
+12833.1s 330 Severity=LOW  max_err=0.02528
+12833.1s 331 
+12833.1s 332 Segment 52: idx 4805~4808 (3 windows)
+12833.1s 333 Severity=LOW  max_err=0.02732
+12833.1s 334 
+12833.1s 335 Segment 53: idx 4984~4986 (2 windows)
+12833.1s 336 Severity=LOW  max_err=0.02527
+12833.1s 337 
+12833.1s 338 Segment 54: idx 4999~5005 (6 windows)
+12833.1s 339 Severity=LOW  max_err=0.02624
+12833.1s 340 
+12833.1s 341 Segment 55: idx 5007~5014 (7 windows)
+12833.1s 342 Severity=LOW  max_err=0.03015
+12833.1s 343 
+12833.1s 344 Segment 56: idx 5015~5027 (12 windows)
+12833.1s 345 Severity=LOW  max_err=0.02717
+12833.1s 346 
+12833.1s 347 Segment 57: idx 5028~5029 (1 windows)
+12833.1s 348 Severity=LOW  max_err=0.02394
+12833.1s 349 
+12833.1s 350 Segment 58: idx 5042~5046 (4 windows)
+12833.1s 351 Severity=LOW  max_err=0.02553
+12833.1s 352 
+12833.1s 353 Segment 59: idx 5050~5059 (9 windows)
+12833.1s 354 Severity=LOW  max_err=0.02632
+12833.1s 355 
+12833.1s 356 Segment 60: idx 5081~5082 (1 windows)
+12833.1s 357 Severity=LOW  max_err=0.02388
+12833.1s 358 
+12833.1s 359 Segment 61: idx 5149~5153 (4 windows)
+12833.1s 360 Severity=LOW  max_err=0.02729
+12833.1s 361 
+12833.1s 362 Segment 62: idx 5155~5157 (2 windows)
+12833.1s 363 Severity=LOW  max_err=0.02458
+12833.1s 364 
+12833.1s 365 Segment 63: idx 5184~5189 (5 windows)
+12833.1s 366 Severity=LOW  max_err=0.02573
+12833.1s 367 
+12833.1s 368 Segment 64: idx 5219~5223 (4 windows)
+12833.1s 369 Severity=LOW  max_err=0.02680
+12833.1s 370 
+12833.1s 371 Segment 65: idx 5257~5260 (3 windows)
+12833.1s 372 Severity=LOW  max_err=0.02946
+12833.1s 373 
+12833.1s 374 Segment 66: idx 5267~5275 (8 windows)
+12833.1s 375 Severity=LOW  max_err=0.03092
+12833.1s 376 
+12833.1s 377 Segment 67: idx 5277~5282 (5 windows)
+12833.1s 378 Severity=LOW  max_err=0.02908
+12833.1s 379 
+12833.1s 380 Segment 68: idx 5336~5358 (22 windows)
+12833.1s 381 Severity=MEDIUM  max_err=0.06184
+12833.1s 382 
+12833.1s 383 Segment 69: idx 5510~5518 (8 windows)
+12833.1s 384 Severity=LOW  max_err=0.03409
+12833.1s 385 
+12833.1s 386 Segment 70: idx 5520~5522 (2 windows)
+12833.1s 387 Severity=LOW  max_err=0.02417
+12833.1s 388 
+12833.1s 389 Segment 71: idx 5538~5540 (2 windows)
+12833.1s 390 Severity=LOW  max_err=0.02449
+12833.1s 391 
+12833.1s 392 Segment 72: idx 5677~5691 (14 windows)
+12833.1s 393 Severity=LOW  max_err=0.03133
+12833.1s 394 
+12833.1s 395 Segment 73: idx 5696~5700 (4 windows)
+12833.1s 396 Severity=LOW  max_err=0.02568
+12833.1s 397 
+12833.1s 398 Segment 74: idx 5755~5760 (5 windows)
+12833.1s 399 Severity=MEDIUM  max_err=0.03886
+12833.1s 400 
+12833.1s 401 Segment 75: idx 5862~5863 (1 windows)
+12833.1s 402 Severity=LOW  max_err=0.02383
+12833.1s 403 
+12833.1s 404 Segment 76: idx 5884~5890 (6 windows)
+12833.1s 405 Severity=MEDIUM  max_err=0.04914
+12833.1s 406 
+12833.1s 407 Segment 77: idx 5949~5958 (9 windows)
+12833.1s 408 Severity=LOW  max_err=0.03271
+12833.1s 409 
+12833.1s 410 Segment 78: idx 5965~5977 (12 windows)
+12833.1s 411 Severity=LOW  max_err=0.02608
+12833.1s 412 
+12833.1s 413 Segment 79: idx 5998~6007 (9 windows)
+12833.1s 414 Severity=LOW  max_err=0.02546
+12833.1s 415 
+12833.1s 416 Segment 80: idx 6009~6012 (3 windows)
+12833.1s 417 Severity=LOW  max_err=0.02455
+12833.1s 418 
+12833.1s 419 Segment 81: idx 6017~6023 (6 windows)
+12833.1s 420 Severity=LOW  max_err=0.02677
+12833.1s 421 
+12833.1s 422 Segment 82: idx 6035~6038 (3 windows)
+12833.1s 423 Severity=LOW  max_err=0.02505
+12833.1s 424 
+12833.1s 425 Segment 83: idx 6132~6135 (3 windows)
+12833.1s 426 Severity=LOW  max_err=0.02431
+12833.1s 427 
+12833.1s 428 Segment 84: idx 6139~6142 (3 windows)
+12833.1s 429 Severity=LOW  max_err=0.02463
+12833.1s 430 
+12833.1s 431 Segment 85: idx 6156~6164 (8 windows)
+12833.1s 432 Severity=LOW  max_err=0.03324
+12833.1s 433 
+12833.1s 434 Segment 86: idx 6168~6179 (11 windows)
+12833.1s 435 Severity=LOW  max_err=0.02993
+12833.1s 436 
+12833.1s 437 Segment 87: idx 6180~6190 (10 windows)
+12833.1s 438 Severity=MEDIUM  max_err=0.04474
+12833.1s 439 
+12833.1s 440 Segment 88: idx 6196~6198 (2 windows)
+12833.1s 441 Severity=LOW  max_err=0.02438
+12833.1s 442 
+12833.1s 443 Segment 89: idx 6206~6211 (5 windows)
+12833.1s 444 Severity=LOW  max_err=0.02753
+12833.1s 445 
+12833.1s 446 Segment 90: idx 6222~6226 (4 windows)
+12833.1s 447 Severity=LOW  max_err=0.02662
+12833.1s 448 
+12833.1s 449 Segment 91: idx 6227~6240 (13 windows)
+12833.1s 450 Severity=LOW  max_err=0.03020
+12833.1s 451 
+12833.1s 452 Segment 92: idx 6241~6243 (2 windows)
+12833.1s 453 Severity=LOW  max_err=0.02437
+12833.1s 454 
+12833.1s 455 Segment 93: idx 6305~6311 (6 windows)
+12833.1s 456 Severity=MEDIUM  max_err=0.03952
+12833.1s 457 
+12833.1s 458 Segment 94: idx 6418~6419 (1 windows)
+12833.1s 459 Severity=LOW  max_err=0.02383
+12833.1s 460 
+12833.1s 461 Segment 95: idx 6439~6448 (9 windows)
+12833.1s 462 Severity=MEDIUM  max_err=0.03588
+12833.1s 463 
+12833.1s 464 Segment 96: idx 6459~6464 (5 windows)
+12833.1s 465 Severity=LOW  max_err=0.03020
+12833.1s 466 
+12833.1s 467 Segment 97: idx 6468~6470 (2 windows)
+12833.1s 468 Severity=LOW  max_err=0.02386
+12833.1s 469 
+12833.1s 470 Segment 98: idx 6489~6493 (4 windows)
+12833.1s 471 Severity=LOW  max_err=0.02799
+12833.1s 472 
+12833.1s 473 Segment 99: idx 6498~6499 (1 windows)
+12833.1s 474 Severity=LOW  max_err=0.02402
+12833.1s 475 
+12833.1s 476 Segment 100: idx 6508~6515 (7 windows)
+12833.1s 477 Severity=LOW  max_err=0.02761
+12833.1s 478 
+12833.1s 479 Segment 101: idx 6516~6523 (7 windows)
+12833.1s 480 Severity=LOW  max_err=0.03204
+12833.1s 481 
+12833.1s 482 Segment 102: idx 6531~6551 (20 windows)
+12833.1s 483 Severity=MEDIUM  max_err=0.04222
+12833.1s 484 
+12833.1s 485 Segment 103: idx 6553~6556 (3 windows)
+12833.1s 486 Severity=LOW  max_err=0.02504
+12833.1s 487 
+12833.1s 488 Segment 104: idx 6569~6575 (6 windows)
+12833.1s 489 Severity=LOW  max_err=0.03152
+12833.1s 490 
+12833.1s 491 Segment 105: idx 6589~6594 (5 windows)
+12833.1s 492 Severity=MEDIUM  max_err=0.03719
+12833.1s 493 
+12833.1s 494 Segment 106: idx 6602~6604 (2 windows)
+12833.1s 495 Severity=LOW  max_err=0.02455
+12833.1s 496 
+12833.1s 497 Recommendation:
+12833.1s 498 Immediate: Check pump seals, bearings, and pressure relief valves.
+12833.1s 499 Short-term: Increase sensor sampling rate for anomalous channels.
+12833.1s 500 Long-term: Schedule preventive maintenance within 48h if HIGH detected.
+12833.4s 501 Gradio app ready.
+12833.8s 502 * Running on local URL:  http://127.0.0.1:7860
+12834.2s 503 * Running on public URL: https://054d50ec5780d2d10f.gradio.live
+12834.2s 504 
+12834.2s 505 This share link expires in 1 week. For free permanent hosting and GPU upgrades, run `gradio deploy` from the terminal in the working directory to deploy to Hugging Face Spaces (https://huggingface.co/spaces)
+12839.2s 506 /usr/local/lib/python3.12/dist-packages/mistune.py:435: SyntaxWarning: invalid escape sequence '\|'
+12839.2s 507 cells[i][c] = re.sub('\\\\\|', '|', cell)
+12839.4s 508 /usr/local/lib/python3.12/dist-packages/nbconvert/filters/filter_links.py:36: SyntaxWarning: invalid escape sequence '\_'
+12839.4s 509 text = re.sub(r'_', '\_', text) # Escape underscores in display text
+12840.0s 510 [NbConvertApp] Converting notebook __notebook__.ipynb to notebook
+12840.3s 511 [NbConvertApp] Writing 96200 bytes to __notebook__.ipynb
+12842.7s 512 [NbConvertApp] Converting notebook __notebook__.ipynb to html
+12843.6s 513 [NbConvertApp] Writing 502333 bytes to __results__.html

@@ -1,0 +1,27 @@
+{
+  "best_params": {
+    "LSTM-AE": {
+      "hidden": 32,
+      "latent": 8,
+      "layers": 2,
+      "dropout": 0.05
+    },
+    "CNN1D-AE": {
+      "hidden": 64,
+      "latent": 8,
+      "layers": 2,
+      "dropout": 0.35
+    }
+  },
+  "window_configs": {
+    "LSTM-AE": {
+      "window_size": 30,
+      "threshold_pct": 90
+    },
+    "CNN1D-AE": {
+      "window_size": 50,
+      "threshold_pct": 93
+    }
+  },
+  "step_size": 10
+}

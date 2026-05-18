@@ -1,6 +1,7 @@
 numpy
 pandas
 matplotlib
+plotly
 seaborn
 scipy
 statsmodels
@@ -10,6 +11,7 @@ optuna
 gradio
 python-dotenv
 google-genai
+google-cloud-aiplatform
 chromadb
 langchain
 langchain-community

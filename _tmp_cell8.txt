@@ -1,0 +1,35 @@
+missing = df_raw[sensor_cols].isnull().mean().sort_values(ascending=False)
+drop_missing = missing[missing > MISSING_THRESH].index.tolist()
+valid_sensors = [c for c in sensor_cols if c not in drop_missing]
+
+fig, axes = plt.subplots(1, 2, figsize=(16, 5))
+
+# 결측률 바차트
+ax = axes[0]
+colors = ['#EF4444' if v > MISSING_THRESH else '#93C5FD' if v > 0.2 else '#6EE7B7'
+          for v in missing.values]
+ax.barh(missing.index, missing.values * 100, color=colors, height=0.7)
+ax.axvline(MISSING_THRESH * 100, color='#EF4444', linestyle='--', lw=1.5,
+           label=f'Drop threshold ({int(MISSING_THRESH*100)}%)')
+ax.set_xlabel('Missing Rate (%)')
+ax.set_title('EDA 1 — Missing Rate per Sensor (red=drop)')
+ax.legend(fontsize=9)
+ax.tick_params(axis='y', labelsize=7)
+
+# 레이블 분포
+vc = df_raw['machine_status'].value_counts()
+bar_col = {'NORMAL':'#6EE7B7', 'BROKEN':'#FCA5A5', 'RECOVERING':'#FDE68A'}
+ax2 = axes[1]
+ax2.bar(vc.index, vc.values,
+        color=[bar_col.get(k,'#CBD5E1') for k in vc.index], edgecolor='white', width=0.5)
+for i,(k,v) in enumerate(vc.items()):
+    ax2.text(i, v+500, f'{v:,}\n({v/len(df_raw)*100:.1f}%)',
+             ha='center', va='bottom', fontsize=10)
+ax2.set_title('EDA 2 — Label Distribution')
+ax2.set_ylabel('Count')
+
+plt.tight_layout()
+plt.savefig(f'{OUTPUT_DIR}/01_missing_labels.png', dpi=150, bbox_inches='tight')
+plt.show()
+print(f'Dropped by missing: {drop_missing}')
+print(f'Remaining sensors : {len(valid_sensors)}')

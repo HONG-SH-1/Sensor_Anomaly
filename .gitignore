@@ -1,14 +1,57 @@
+# ── 가상환경 ─────────────────────────────────────────────────
 venv/
-data/raw/
-outputs/figures/
-models/checkpoints/
-*.pt
-*.pkl
-__pycache__/
-.ipynb_checkpoints/
+.venv/
+env/
+
+# ── 환경변수·API 키 ───────────────────────────────────────────
 .env
+.env.*
+!.env.example
+
+# ── 원본 데이터 (대용량) ──────────────────────────────────────
+data/raw/
+
+# ── 모델 가중치·스케일러 (대용량) ────────────────────────────
+models/**/*.pt
+models/**/*.pkl
+models/checkpoints/
+models/1차/
+
+# ── Chroma 벡터 DB (실행 시 자동 생성) ───────────────────────
 rag/chroma_db/
+
+# ── 노트북 산출물 (figures, reports) ──────────────────────────
+outputs/figures/
 outputs/reports/
-vif_v/
-all_v/
-gcp-key.json
+
+# ── Gradio 자동 생성 파일 ─────────────────────────────────────
+.gradio/
+
+# ── 임시·잔여 파일 ────────────────────────────────────────────
+_tmp_cell8.txt
+*.tmp
+*.bak
+
+# ── Python 캐시 ───────────────────────────────────────────────
+__pycache__/
+*.py[cod]
+*.pyo
+.pytest_cache/
+.mypy_cache/
+
+# ── Jupyter 체크포인트 ────────────────────────────────────────
+.ipynb_checkpoints/
+
+# ── OS 자동 생성 ──────────────────────────────────────────────
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# ── IDE ───────────────────────────────────────────────────────
+.vscode/
+.idea/
+*.code-workspace
+
+# ── 로컬 전용 문서 (원격 미업로드) ─────────────────────────────
+인수인계.txt
+
