@@ -1,4 +1,4 @@
-# 산업용 펌프 센서 이상 탐지 시스템
+# 산업용 펌프 센서 이상 탐지 시스템 (수정중)
 
 **Python** · **PyTorch** · **Optuna** · **Gradio** · **ChromaDB** · **Vertex AI Gemini**
 
